@@ -1,14 +1,21 @@
-import React from "react";
+import React, {useState} from "react";
 
-function Poem() {
+
+function Poem({poem}) {
+  const [read, setRead]=useState(false)
+  
+function handleRead (){
+  setRead((read)=>!read)
+}
+
   return (
     <div>
-      <h3>Title</h3>
-      <p>Content</p>
+      <h3>{poem.title}</h3>
+      <p>{poem.content}</p>
       <p>
-        <strong>- By Author</strong>
+        <strong>- {poem.author}</strong>
       </p>
-      <button>Mark as read</button>
+      <button onClick={handleRead}>{read ? "Mark as Unread" : "Mark as Read"} </button>
     </div>
   );
 }
